@@ -253,7 +253,7 @@ class CR_XYFromFolder:
             image = image.squeeze()
             sample_frames.append(image)
         
-        resolved_font_path = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), "fonts\Roboto-Regular.ttf")
+        resolved_font_path = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), "fonts", "Roboto-Regular.ttf")
         font = ImageFont.truetype(str(resolved_font_path), size=font_size)
         
         start_x_ann = (start_index % max_columns) - 1
