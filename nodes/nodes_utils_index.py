@@ -21,7 +21,7 @@ class CR_Trigger:
     CATEGORY = icons.get("Comfyroll/Utils/Index")
 
     def trigger(self, index, trigger_value):
-        show_help = "https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Index-Nodes#cr-trigger"
+        show_help = "https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Utils-Index-Nodes#cr-trigger"
         return (index, index == trigger_value, show_help, )
 
 #---------------------------------------------------------------------------------------------------------------------#
