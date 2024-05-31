@@ -201,36 +201,36 @@ class CR_LoadImageList:
 
 #---------------------------------------------------------------------------------------------------------------------#
 class CR_LoadImageListPlus:
-
     @classmethod
-    def INPUT_TYPES(s):
-    
+    def INPUT_TYPES(cls):
         input_dir = folder_paths.input_directory
-        image_folder = [name for name in os.listdir(input_dir) if os.path.isdir(os.path.join(input_dir,name))] 
-    
-        return {"required": {"input_folder": (sorted(image_folder), ),
-                             "start_index": ("INT", {"default": 0, "min": 0, "max": 99999}),
-                             "max_images": ("INT", {"default": 1, "min": 1, "max": 99999}),
-               },
-               "optional": {"input_path": ("STRING", {"default": '', "multiline": False}),     
-               }
+        image_folder = [name for name in os.listdir(input_dir) if os.path.isdir(os.path.join(input_dir, name))]
+
+        return {
+            "required": {
+                "input_folder": (sorted(image_folder),),
+                "start_index": ("INT", {"default": 0, "min": 0, "max": 99999}),
+                "max_images": ("INT", {"default": 1, "min": 1, "max": 99999})
+            },
+            "optional": {
+                "input_path": ("STRING", {"default": '', "multiline": False})
+            }
         }
 
-    RETURN_TYPES = ("IMAGE", "MASK", "INT", "STRING", "INT", "INT", "INT", "STRING", )
-    RETURN_NAMES = ("IMAGE", "MASK", "index", "filename", "width", "height", "list_length", "show_help", )
+    RETURN_TYPES = ("IMAGE", "MASK", "INT", "STRING", "INT", "INT", "INT", "STRING")
+    RETURN_NAMES = ("IMAGE", "MASK", "index", "filename", "width", "height", "list_length", "show_help")
     OUTPUT_IS_LIST = (True, True, True, True, False, False, False, False)
     FUNCTION = "make_list"
     CATEGORY = icons.get("Comfyroll/List/IO")
 
     def make_list(self, start_index, max_images, input_folder, input_path=None, vae=None):
-    
         show_help = "https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/List-Nodes#cr-image-list-plus"
 
         # Set the input path
         if input_path != '' and input_path is not None:
             if not os.path.exists(input_path):
                 print(f"[Warning] CR Image List: The input_path `{input_path}` does not exist")
-                return ("",)  
+                return ("",)
             in_path = input_path
         else:
             input_dir = folder_paths.input_directory
@@ -241,52 +241,50 @@ class CR_LoadImageListPlus:
             print(f"[Warning] CR Image List: The folder `{in_path}` is empty")
             return None
 
-        file_list = sorted(os.listdir(in_path), key=lambda s: sum(((s, int(n)) for s, n in re.findall(r'(\D+)(\d+)', 'a%s0' % s)), ()))
-        
+        # Get a list of image files only
+        image_extensions = (".webp", ".jpg", ".jpeg", ".png")
+        file_list = [f for f in sorted(os.listdir(in_path)) if f.lower().endswith(image_extensions)]
+
         image_list = []
         mask_list = []
-        index_list = []        
+        index_list = []
         filename_list = []
-        exif_list = []         
-        
+
         # Ensure start_index is within the bounds of the list
         start_index = max(0, min(start_index, len(file_list) - 1))
 
-        # Calculate the end index based on max_rows
-        end_index = min(start_index + max_images, len(file_list) - 1)
-                    
-        for num in range(start_index, end_index):
-            filename = file_list[num]
+        # Process images within the specified range
+        for num, filename in enumerate(file_list[start_index:], start=start_index):
+            if num - start_index >= max_images:
+                break
+
             img_path = os.path.join(in_path, filename)
-            
-            img = Image.open(os.path.join(in_path, file_list[num]))            
+            img = Image.open(img_path)
             image_list.append(pil2tensor(img.convert("RGB")))
-            
+
             tensor_img = pil2tensor(img)
-            mask_list.append(tensor2rgba(tensor_img)[:,:,:,0])
-           
+            mask_list.append(tensor2rgba(tensor_img)[:, :, :, 0])
+
             # Populate the image index
             index_list.append(num)
-
             # Populate the filename_list
             filename_list.append(filename)
-            
+
         if not image_list:
             # Handle the case where the list is empty
             print("CR Load Image List: No images found.")
             return None
 
         width, height = Image.open(os.path.join(in_path, file_list[start_index])).size
-            
+
         images = torch.cat(image_list, dim=0)
         images_out = [images[i:i + 1, ...] for i in range(images.shape[0])]
-
         masks = torch.cat(mask_list, dim=0)
         mask_out = [masks[i:i + 1, ...] for i in range(masks.shape[0])]
-        
-        list_length = end_index - start_index
-        
-        return (images_out, mask_out, index_list, filename_list, index_list, width, height, list_length, show_help, )
+
+        list_length = len(image_list)
+
+        return (images_out, mask_out, index_list, filename_list, index_list, width, height, list_length, show_help)
 
 #---------------------------------------------------------------------------------------------------------------------#
 class CR_LoadGIFAsList:
