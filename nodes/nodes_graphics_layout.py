@@ -321,7 +321,7 @@ class CR_ImageGridPanel:
         # Apply borders and outlines to each image
         images = apply_outline_and_border(images, outline_thickness, outline_color, border_thickness, border_color)
 
-        combined_image = make_grid_panel(images, max_columns)
+        combined_image = make_grid_panel(images, max_columns, border_color)
         
         image_out = pil2tensor(combined_image)
 

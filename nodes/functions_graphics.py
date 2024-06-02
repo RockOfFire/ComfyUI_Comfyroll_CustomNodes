@@ -455,7 +455,7 @@ def random_rgb():
     return rgb_string
 
 
-def make_grid_panel(images, max_columns):
+def make_grid_panel(images, max_columns, color=0):
 
     # Calculate dimensions for the grid
     num_images = len(images)
@@ -463,7 +463,7 @@ def make_grid_panel(images, max_columns):
     combined_width = max(image.width for image in images) * min(max_columns, num_images)
     combined_height = max(image.height for image in images) * num_rows
 
-    combined_image = Image.new('RGB', (combined_width, combined_height))
+    combined_image = Image.new('RGB', (combined_width, combined_height), color=color)
 
     x_offset, y_offset = 0, 0  # Initialize offsets
     for image in images:
