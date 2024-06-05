@@ -281,7 +281,7 @@ class CR_AspectRatioBanners:
                          "Billboard - 970x250", 
                          "Portrait - 300x1050", 
                          "Banner - 468x60", 
-                         "Leaderboard - 72'8x90",
+                         "Leaderboard - 728x90",
                          "Ko-Fi - 1200x400",
                          "Redbubble - 2400x600"]
                                  
