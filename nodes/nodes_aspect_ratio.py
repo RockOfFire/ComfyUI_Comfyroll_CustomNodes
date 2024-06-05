@@ -282,7 +282,8 @@ class CR_AspectRatioBanners:
                          "Portrait - 300x1050", 
                          "Banner - 468x60", 
                          "Leaderboard - 72'8x90",
-                         "Ko-Fi - 1200x400"]
+                         "Ko-Fi - 1200x400",
+                         "Redbubble - 2400x600"]
                                  
         return {
             "required": {
@@ -333,7 +334,9 @@ class CR_AspectRatioBanners:
             width, height = 728, 90
         elif aspect_ratio == "Ko-Fi - 1200x400":
             width, height = 1200, 400    
-        
+        elif aspect_ratio == "Redbubble - 2400x600":
+            width, height = 2400, 600 
+            
         if swap_dimensions == "On":
             width, height = height, width
         
