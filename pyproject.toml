@@ -1,0 +1,14 @@
+[project]
+name = "pr-comfyui_comfyroll_customnodes-53223b24"
+description = ""
+version = "1.0.0"
+license = "LICENSE"
+
+[project.urls]
+Repository = "https://github.com/haohaocreates/PR-ComfyUI_Comfyroll_CustomNodes-53223b24"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "PR-ComfyUI_Comfyroll_CustomNodes-53223b24"
+Icon = ""
