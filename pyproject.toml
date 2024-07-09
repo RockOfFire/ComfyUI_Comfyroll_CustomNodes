@@ -5,7 +5,7 @@ version = "1.0.0"
 license = "LICENSE"
 
 [project.urls]
-Repository = "https://github.com/haohaocreates/PR-ComfyUI_Comfyroll_CustomNodes-53223b24"
+Repository = "https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes"
 #  Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]
