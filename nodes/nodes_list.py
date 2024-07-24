@@ -565,7 +565,7 @@ class CR_LoadTextList:
                     list.append(row)
                     
         elif file_extension == "txt":
-            with open(filepath, "r") as txt_file:
+            with open(filepath, "r",encoding='utf-8',errors='ignore') as txt_file:
                 for row in txt_file:
                     list.append(row)
         else:
