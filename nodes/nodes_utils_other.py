@@ -118,7 +118,7 @@ class CR_MathOperation:
         elif operation == 'cos':
             result = math.cos(a)
         elif operation == 'tan':
-            result = math.cos(a)        
+            result = math.tan(a)        
         elif operation == 'sqrt':
             result = math.sqrt(a)
         elif operation == 'exp':
