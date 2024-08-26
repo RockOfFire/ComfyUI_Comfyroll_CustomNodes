@@ -182,11 +182,11 @@ class CR_LoadImageList:
         start_index = max(0, min(start_index, len(file_list) - 1))
 
         # Calculate the end index based on max_rows
-        end_index = min(start_index + max_images, len(file_list) - 1)
+        end_index = min(start_index + max_images, len(file_list))
                     
         for num in range(start_index, end_index):
             img = Image.open(os.path.join(in_path, file_list[num]))
-            image = img.convert("RGB")
+            image = img.convert("RGBA")
             image_list.append(pil2tensor(image))
         
         if not image_list:
@@ -253,14 +253,14 @@ class CR_LoadImageListPlus:
         start_index = max(0, min(start_index, len(file_list) - 1))
 
         # Calculate the end index based on max_rows
-        end_index = min(start_index + max_images, len(file_list) - 1)
+        end_index = min(start_index + max_images, len(file_list))
                     
         for num in range(start_index, end_index):
             filename = file_list[num]
             img_path = os.path.join(in_path, filename)
             
             img = Image.open(os.path.join(in_path, file_list[num]))            
-            image_list.append(pil2tensor(img.convert("RGB")))
+            image_list.append(pil2tensor(img.convert("RGBA")))
             
             tensor_img = pil2tensor(img)
             mask_list.append(tensor2rgba(tensor_img)[:,:,:,0])
