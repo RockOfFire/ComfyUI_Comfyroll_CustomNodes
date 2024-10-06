@@ -83,6 +83,7 @@ NODE_CLASS_MAPPINGS = {
     "CR Aspect Ratio Banners": CR_AspectRatioBanners, 
     "CR Aspect Ratio Social Media": CR_AspectRatioSocialMedia,  
     "CR_Aspect Ratio For Print": CR_AspectRatioForPrint,
+    "CR Aspect RatioPH": CR_AspectRatioPH,
     ### Legacy Nodes
     "CR Image Size": CR_ImageSize,
     "CR Aspect Ratio SDXL": CR_AspectRatio_SDXL,
