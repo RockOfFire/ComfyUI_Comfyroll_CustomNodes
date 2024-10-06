@@ -1,5 +1,9 @@
 # 🧩 Comfyroll Studio
 
+****** Simple update ***********
+Add the node "CR Aspect Ratio PH", to include some smartphones screen resolutions
+********************************
+
 Co-authored by Suzie1 and RockOfFire
 
 Current version: 1.76
@@ -39,6 +43,7 @@ __📦 Essential Nodes__
 
 __🔳 Aspect Ratio__
 * CR Aspect Ratio
+              * CR Aspect Ratio PH - to include smartphones screen resolutions
 * CR SDXL Aspect Ratio
 * CR SD1.5 Aspect Ratio
 * CR Aspect Ratio Banners (new 18/12/2023)
