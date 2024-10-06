@@ -1,7 +1,7 @@
 # 🧩 Comfyroll Studio
 
 ****** Simple update ***********
-Add the node "CR Aspect Ratio PH", to include some smartphones screen resolutions
+Add the node "CR Aspect Ratio PH" to include some smartphones screen resolutions
 ********************************
 
 Co-authored by Suzie1 and RockOfFire
