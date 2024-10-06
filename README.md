@@ -49,6 +49,7 @@ __🔳 Aspect Ratio__
 * CR Aspect Ratio Banners (new 18/12/2023)
 * CR Aspect Ratio Social Media (new 15/1/2024)
 * CR Aspect Ratio For Print (new 18/1/2024)
+* CR Aspect RatioPH (new 06/10/2024)
 
 __📜 List Nodes__
 * CR Text List (new 19/12/2023)
