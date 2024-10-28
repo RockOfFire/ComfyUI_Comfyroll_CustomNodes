@@ -2,7 +2,7 @@
 
 Co-authored by Suzie1 and RockOfFire
 
-Current version: 1.76
+Current version: 1.78
 
 # Wiki
 
