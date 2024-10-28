@@ -76,7 +76,7 @@ class CR_TextList:
     FUNCTION = "make_list"
     CATEGORY = icons.get("Comfyroll/List")
 
-    def make_list(self, multiline_text, start_index, max_rows, loops):
+    def make_list(self, multiline_text, start_index, max_rows):
 
         show_help = "https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki/Other-Nodes#cr-text-list"
 
